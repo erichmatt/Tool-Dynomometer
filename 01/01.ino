@@ -27,18 +27,14 @@ void loop()
         t2 = micros();
         list[i]= t2-t1;
         t1 = t2;
-        i++;
+        ++i;
       }
     }
     laststate = encoderstate;
   }
-  for (int i =0; i <= 800; i++)
+  for (int i =0; i <= 800; ++i)
   {
     Serial.print(list[i],DEC);
     Serial.print("\n");
-  }
-  while (1)
-  {
-    
   }
 }
