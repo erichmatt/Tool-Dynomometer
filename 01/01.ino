@@ -12,12 +12,12 @@ void loop()
   digitalWrite(LED_BUILTIN,HIGH);
   // put your main code here, to run repeatedly:
   char encoderstate, laststate;
-  unsigned int list[800];
+  unsigned int list[3800];
   unsigned long t1, t2;
   int i = 0;
   t1 = micros();
   laststate = digitalRead(2);
-  while (i <=800)
+  while (i <=3800)
   {
     encoderstate = digitalRead(2);
     if (encoderstate != laststate)
@@ -32,7 +32,7 @@ void loop()
     }
     laststate = encoderstate;
   }
-  for (int i =0; i <= 800; ++i)
+  for (int i =0; i <= 3800; ++i)
   {
     Serial.print(list[i],DEC);
     Serial.print("\n");
