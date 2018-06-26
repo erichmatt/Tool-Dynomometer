@@ -13,11 +13,12 @@ void loop()
   // put your main code here, to run repeatedly:
   char encoderstate, laststate;
   unsigned int list[3800];
+  unsigned int interval[2];
   unsigned long t1, t2;
   int i = 0;
   t1 = micros();
   laststate = digitalRead(2);
-  while (i <=3800)
+  while (i <=7600)
   {
     encoderstate = digitalRead(2);
     if (encoderstate != laststate)
@@ -25,8 +26,12 @@ void loop()
       if (encoderstate == HIGH)
       {
         t2 = micros();
-        list[i]= t2-t1;
+        interval[i%2]= t2-t1;
         t1 = t2;
+        if (i%2 == 0)
+        {
+          list[i/2] = interval[0]+interval[1];
+        }
         ++i;
       }
     }
